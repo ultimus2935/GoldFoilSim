@@ -100,7 +100,23 @@ class alphaParticle():
 
 # Body Instance Creation
 
-goldAtoms.list.append(goldAtom(zeros(2)))
+goldAtoms.list = []
+
+def create(n, d):
+    if n % 2 == 0:
+        m = n // 2
+        for i in range(m):
+            goldAtoms.list.append(goldAtom(([-d * (2 * i + 1) / 2, 0])))
+            goldAtoms.list.append(goldAtom(([d * (2 * i + 1) / 2, 0])))
+         
+    else:
+        m = (n-1) // 2
+        for i in range(m):
+            goldAtoms.list.append(goldAtom(([-d * (i + 1), 0])))
+            goldAtoms.list.append(goldAtom(([d * (i + 1), 0])))
+            goldAtoms.list.append(goldAtom(zeros(2)))
+
+create(12, 2*gold_AtomicRadius)
 
 alphaParticles.list.append(alphaParticle(array([0*effectiveRadius, -effectiveRadius])))
 
